@@ -10,31 +10,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
-      - name: Build project
-        run: ./gradlew clean build
+    - name: Grant execute permission for gradlew
+      run: chmod +x ./gradlew
 
-      - name: Copy JAR to remote server
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo -e "Host mykeyhost\n  User ubuntu\n  HostName 13.209.198.1\n  IdentityFile ~/.ssh/id_rsa\n  StrictHostKeyChecking no" > ~/.ssh/config
-          scp build/libs/demo-0.0.1-SNAPSHOT.jar mykeyhost:~/
+    - name: Build project
+      run: ./gradlew clean build
 
-      - name: Deploy application
-        run: |
-          ssh mykeyhost << 'EOF'
-          sudo pkill -f 'java -jar' || true
-          sudo nohup java -jar ~/demo-0.0.1-SNAPSHOT.jar --server.port=443 > app.log 2>&1 &
-          EOF
+    - name: Copy JAR to remote server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        set -x  # 명령어를 실행할 때마다 출력
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo -e "Host mykeyhost\n  User ubuntu\n  HostName 13.209.198.1\n  IdentityFile ~/.ssh/id_rsa\n  StrictHostKeyChecking no" > ~/.ssh/config
+        ls -l ~/.ssh  # SSH 디렉토리 확인
+        scp build/libs/demo-0.0.1-SNAPSHOT.jar mykeyhost:~/
+
+    - name: Deploy application
+      run: |
+        set -x  # 명령어를 실행할 때마다 출력
+        ssh mykeyhost << 'EOF'
+        sudo pkill -f 'java -jar' || true
+        sudo nohup java -jar ~/demo-0.0.1-SNAPSHOT.jar --server.port=443 > app.log 2>&1 &
+        EOF
