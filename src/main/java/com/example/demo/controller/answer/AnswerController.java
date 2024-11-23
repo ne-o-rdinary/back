@@ -20,19 +20,19 @@ public class AnswerController {
 
 	@PostMapping()
 	@Operation(summary = "답변 저장 API", description = "답변을 저장하는 API")
-	public ResponseEntity<ApiResponse<AnswerCreateResponseDto>> createAnswer(
+	public ApiResponse<AnswerCreateResponseDto> createAnswer(
 		@Valid @RequestBody AnswerRequestDto dto) {
 
 		AnswerCreateResponseDto answerCreateResponseDto = answerService.createAnswer(dto);
 
-		return ResponseEntity.ok(ApiResponse.onSuccess(answerCreateResponseDto));
+		return ApiResponse.onSuccess(answerCreateResponseDto);
 	}
 
-	@GetMapping("/{answerId}")
-	@Operation(summary = "답변 조회 API", description = "답변을 조회하는 API")
-	public ResponseEntity<ApiResponse<AnswerResponseDto>> getAnswer(@PathVariable Long answerId) {
-		AnswerResponseDto answerResponseDto = answerService.getAnswer(answerId);
+	@GetMapping("/{uuid}")
+	@Operation(summary = "질문/답변 조회 API", description = "질문/답변 조회하는 API")
+	public ApiResponse<AnswerResponseDto> getAnswer(@PathVariable String uuid) {
+		AnswerResponseDto answerResponseDto = answerService.getAnswer(uuid);
 
-		return ResponseEntity.ok(ApiResponse.onSuccess(answerResponseDto));
+		return ApiResponse.onSuccess(answerResponseDto);
 	}
 }

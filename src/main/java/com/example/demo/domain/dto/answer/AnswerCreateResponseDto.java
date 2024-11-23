@@ -4,9 +4,9 @@ import com.example.demo.domain.entity.answer.Answer;
 
 public class AnswerCreateResponseDto {
 
-	private Long answerId;
+	private String uuid;
 
-	public AnswerCreateResponseDto(Answer answer) {
-		this.answerId = answer.getId();
+	public AnswerCreateResponseDto(String uuid) {
+		this.uuid = uuid;
 	}
 }
