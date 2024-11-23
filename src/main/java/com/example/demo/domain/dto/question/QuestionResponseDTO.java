@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
+@Getter
+@NoArgsConstructor
 public class QuestionResponseDTO {
-
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class questionResultDTO {
-        Long questionId;
-        String question;
+    private Long questionId;
+    private String question;
+    public QuestionResponseDTO(Long questionId, String question) {
+        this.questionId = questionId;
+        this.question = question;
     }
 }

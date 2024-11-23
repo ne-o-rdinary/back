@@ -4,6 +4,7 @@ import com.example.demo.base.ApiResponse;
 import com.example.demo.domain.dto.answer.AnswerCreateResponseDto;
 import com.example.demo.domain.dto.answer.AnswerRequestDto;
 import com.example.demo.service.answer.AnswerService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class AnswerController {
 	private final AnswerService answerService;
 
 	@PostMapping()
+	@Operation(summary = "답변 저장 API", description = "답변을 저장하는 API")
 	public ResponseEntity<ApiResponse<AnswerCreateResponseDto>> createAnswer(
 		@Valid @RequestBody AnswerRequestDto dto) {
 
