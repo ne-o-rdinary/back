@@ -11,6 +11,7 @@ import com.example.demo.domain.entity.question_answer.QuestionAnswer;
 import com.example.demo.repository.answer.AnswerRepository;
 import com.example.demo.repository.question.QuestionRepository;
 import com.example.demo.repository.question_answer.QuestionAnswerRepository;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,17 +35,20 @@ public class AnswerService {
 		Answer answer = new Answer(dto.getAnswer());
 		answerRepository.save(answer);
 
-		QuestionAnswer questionAnswer = new QuestionAnswer(question, answer);
+		String uuid = UUID.randomUUID().toString();
+
+		QuestionAnswer questionAnswer = new QuestionAnswer(question, answer, uuid);
 		questionAnswerRepository.save(questionAnswer);
 
-		return new AnswerCreateResponseDto(answer);
+		return new AnswerCreateResponseDto(questionAnswer.getUuid());
 	}
 
 	@Transactional(readOnly = true)
-	public AnswerResponseDto getAnswer(Long answerId) {
-		Answer answer = answerRepository.findById(answerId).orElseThrow(
+	public AnswerResponseDto getAnswer(String uuid) {
+		QuestionAnswer questionAnswer = questionAnswerRepository.findBy(uuid).orElseThrow(
 			() -> new GeneralException(ErrorStatus.ANSWER_NOT_FOUND.getReasonHttpStatus()));
 
-		return new AnswerResponseDto(answer.getAnswer());
+		return new AnswerResponseDto(questionAnswer.getQuestion().getQuestion(),
+			questionAnswer.getAnswer().getAnswer());
 	}
 }
