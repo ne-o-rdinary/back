@@ -1,19 +1,20 @@
 server:
   ssl:
-    key-store: "${SERVER_SSL_KEY_STORE}"
+    key-store: "classpath:keystore.p12"
     key-store-type: PKCS12
-    key-store-password: "${SERVER_SSL_KEY_STORE_PASSWORD}"
+    key-store-password: asdttycc
   port: 443
 
 spring:
   jwt:
-    secret-key: "${JWT_SECRET_KEY}"
-    redirect: "https://yoonsever.xn--h32bi4v.xn--3e0b707e:443/login?name=%s&user_uuid=%s"
+    secret-key: "hadgfsfsfsfsssfsfssfsfsfsffasadad1234567890"  # JWT 비밀 키 (256비트 이상)
+    redirect: "https://yoonsever.xn--h32bi4v.xn--3e0b707e:443/login?name=%s&user_uuid=%s"  # 로그인 후 리디렉션 URL (사용자 uuid 포함)
     access-token:
-      expiration-time: 3600000
+      expiration-time: 3600000  # 액세스 토큰 만료 시간 (밀리초 단위, 1시간)
     refresh-token:
-      expiration-time: 604800000
-    security:
+      expiration-time: 604800000  # 리프레시 토큰 만료 시간 (밀리초 단위, 7일)
+
+  security:
     oauth2:
       client:
         registration:
