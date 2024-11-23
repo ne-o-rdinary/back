@@ -13,13 +13,12 @@ public class QuestionQueryImpl implements QuestionQuery {
 
 	private final JPAQueryFactory jpaQueryFactory;
 
-
 	@Override
 	public List<Long> findIdByQuestionCategory(QuestionCategory category) {
 		QQuestion question = QQuestion.question1;
 
 		return jpaQueryFactory
-			.select(question.id)
+			.select(question.id).from(question)
 			.where(question.questionCategory.eq(category))
 			.fetch();
 	}
