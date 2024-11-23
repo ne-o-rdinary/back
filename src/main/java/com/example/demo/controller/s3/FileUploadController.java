@@ -3,6 +3,7 @@ package com.example.demo.controller.s3;
 import com.example.demo.base.ApiResponse;
 import com.example.demo.base.code.status.exception.ErrorStatus;
 import com.example.demo.base.code.status.exception.GeneralException;
+import com.example.demo.domain.dto.s3.FileResponseDTO;
 import com.example.demo.domain.dto.s3.FileUploadRequestDTO;
 import com.example.demo.domain.dto.s3.FileUploadResponseDTO;
 import com.example.demo.domain.entity.s3.FileUploadEntity;
@@ -59,12 +60,12 @@ public class FileUploadController {
     }
 
     @GetMapping("/urls")
-    public ApiResponse<List<String>> getFileUrls(@RequestParam String folderName) {
+    public ApiResponse<List<FileResponseDTO>> getFileUrls(@RequestParam String folderName) {
         try {
             // SecurityContext에서 사용자 ID 추출
             String userId = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-            // DB에서 해당 조건에 맞는 파일 URL 조회
+            // DB에서 해당 조건에 맞는 파일 정보 조회
             List<FileUploadEntity> fileUploadEntities = fileUploadRepository.findByUserTokenAndFolderName(userId, folderName);
 
             // 파일이 없으면 에러 처리
@@ -72,10 +73,14 @@ public class FileUploadController {
                 throw new GeneralException(ErrorStatus.NOT_FOUND.getReasonHttpStatus());
             }
 
-            List<String> fileUrls = fileUploadEntities.stream()
-                    .map(FileUploadEntity::getFileUrl)
+            // Entity 데이터를 DTO로 변환
+            List<FileResponseDTO> fileDtos = fileUploadEntities.stream()
+                    .map(entity -> new FileResponseDTO(
+                            entity.getFileUrl()
+                    ))
                     .toList();
-            return ApiResponse.onSuccess(fileUrls);
+
+            return ApiResponse.onSuccess(fileDtos);
         } catch (GeneralException ge) {
             throw ge;
         } catch (Exception e) {

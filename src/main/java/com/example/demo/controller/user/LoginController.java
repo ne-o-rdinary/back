@@ -23,7 +23,7 @@ public class LoginController {
      * 유저 UUID를 받아서 해당 RefreshToken을 반환하는 API
      * @param userId UUID
      * @return RefreshToken 정보
-     */
+     
     @GetMapping("/api/login/{userId}")
     public ResponseEntity<ApiResponse<RefreshToken>> login(@PathVariable UUID userId) {
         // UUID에 해당하는 RefreshToken을 데이터베이스에서 찾음
@@ -37,4 +37,5 @@ public class LoginController {
         // 정상적으로 토큰을 찾았다면 성공적인 응답 반환
         return ResponseEntity.ok(ApiResponse.onSuccess(refreshToken));
     }
+    */
 }
