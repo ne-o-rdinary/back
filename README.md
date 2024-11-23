@@ -4,9 +4,10 @@
 ![ㅇ](https://github.com/user-attachments/assets/1b770362-0361-4272-a7f9-cbff40de6dbc)
 
 ## 👶🏻 팀원 구성
-|<img src="https://avatars.githubusercontent.com/u/64758823?v=4,ptq124,박태규 Park Tae Kyu,https://github.com/ptq124" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/114673063?v=4,marshmallowing,Youjin,https://github.com/marshmallowing" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/81246338?v=4,gkfla668,임하림,https://github.com/gkfla668" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/108733746?v=4,Yoon0221,신지윤 (Yoon),https://github.com/Yoon0221" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/115148838?v=4,hcg0127,,https://github.com/hcg0127" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/154957716?v=4,OZIIJIN,OZIIJIN,https://github.com/OZIIJIN" width="150" height="150"/>
-|:-:|:-:|:-:|:-:|:-:|:-:
-|FE : [@ptq124](https://github.com/ptq124)|FE : [@marshmallowing](https://github.com/marshmallowing)|FE : [@gkfla668](https://github.com/gkfla668)|BE : [@Yoon0221](https://github.com/Yoon0221)|BE : [@hcg0127](https://github.com/hcg0127)|BE : [@OZIIJIN](https://github.com/OZIIJIN)
+|<img src="https://avatars.githubusercontent.com/u/64758823?v=4,ptq124,박태규 Park Tae Kyu,https://github.com/ptq124" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/114673063?v=4,marshmallowing,Youjin,https://github.com/marshmallowing" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/81246338?v=4,gkfla668,임하림,https://github.com/gkfla668" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/108733746?v=4,Yoon0221,신지윤 (Yoon),https://github.com/Yoon0221" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/115148838?v=4,hcg0127,,https://github.com/hcg0127" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/154957716?v=4,OZIIJIN,OZIIJIN,https://github.com/OZIIJIN" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/102686050?v=4,junehojo,,https://github.com/junehojo" width="150" height="150"/>
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:
+|FE : [@ptq124](https://github.com/ptq124)|FE : [@marshmallowing](https://github.com/marshmallowing)|FE : [@gkfla668](https://github.com/gkfla668)|BE : [@Yoon0221](https://github.com/Yoon0221)|BE : [@hcg0127](https://github.com/hcg0127)|BE : [@OZIIJIN](https://github.com/OZIIJIN)|Designer : [@junehojo](https://github.com/junehojo)
+
 
 
 ## 💬 프로젝트 소개
