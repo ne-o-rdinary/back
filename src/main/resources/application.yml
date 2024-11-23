@@ -28,8 +28,8 @@ spring:
             redirect-uri: https://yoonsever.xn--h32bi4v.xn--3e0b707e:443/login/oauth2/code/google
 
           kakao:
-            client-id: 6b1d134980644fe3a21d1a0f09b52c4d
-            client-secret: 6CE5ZNnGwrIfqkAjBENpiFIik67OsSdE
+            client-id: "${OAUTH_KAKAO_CLIENT_ID}"
+            client-secret: "${OAUTH_KAKAO_CLIENT_SECRET}"
             scope:
               - profile_nickname
             authorization-grant-type: authorization_code
