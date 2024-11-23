@@ -3,7 +3,7 @@ name: CI/CD Deployment
 on:
   push:
     branches:
-      - dev  # main 브랜치에 푸시될 때 트리거
+      - dev  # dev 브랜치에 푸시될 때 트리거
 
 jobs:
   deploy:
