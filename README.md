@@ -27,3 +27,6 @@
 
 ![image](https://github.com/user-attachments/assets/ecb97a33-4296-42f5-8143-cc70283290f5)
 
+## 🎬 시연영상
+https://github.com/user-attachments/assets/9997d7fc-61f8-465a-9c4b-3f5688e15b89
+
