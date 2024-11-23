@@ -52,7 +52,7 @@ public class AnswerService {
 			throw new GeneralException(ErrorStatus.QUESTION_ANSWER_NOT_FOUND.getReasonHttpStatus());
 		}
 
-		return new AnswerResponseDto(questionAnswer.getQuestion().getQuestion(),
+		return new AnswerResponseDto(questionAnswer.getQuestion().getImageIndex(),questionAnswer.getQuestion().getQuestion(),
 			questionAnswer.getAnswer().getAnswer());
 	}
 }

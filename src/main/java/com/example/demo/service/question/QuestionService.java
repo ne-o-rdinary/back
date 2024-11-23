@@ -44,6 +44,7 @@ public class QuestionService {
         return QuestionResponseDTO.builder()
             .questionId(q.getId())
             .question(q.getQuestion())
+            .imageIndex(q.getImageIndex())
             .build();
     }
 }

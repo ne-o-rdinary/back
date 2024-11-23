@@ -26,6 +26,9 @@ public class Question extends BaseEntity {
 	@Column(nullable = false, columnDefinition = "VARCHAR(15)")
 	private QuestionCategory questionCategory;
 
+	@Column
+	private int imageIndex;
+
 	public Question(String question) {
 		this.question = question;
 	}
