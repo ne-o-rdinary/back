@@ -49,7 +49,7 @@ public class AnswerService {
 	public AnswerResponseDto getAnswer(String uuid) {
 		QuestionAnswer questionAnswer = questionAnswerQuery.findByUUID(uuid);
 
-		return new AnswerResponseDto(questionAnswer.getQuestion().getQuestion(),
+		return new AnswerResponseDto(questionAnswer.getQuestion().getImageIndex(),questionAnswer.getQuestion().getQuestion(),
 			questionAnswer.getAnswer().getAnswer());
 	}
 }
