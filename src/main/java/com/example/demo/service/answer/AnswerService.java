@@ -10,6 +10,7 @@ import com.example.demo.domain.entity.question.Question;
 import com.example.demo.domain.entity.question_answer.QuestionAnswer;
 import com.example.demo.repository.answer.AnswerRepository;
 import com.example.demo.repository.question.QuestionRepository;
+import com.example.demo.repository.question_answer.QuestionAnswerQuery;
 import com.example.demo.repository.question_answer.QuestionAnswerRepository;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class AnswerService {
 	private final AnswerRepository answerRepository;
 	private final QuestionRepository questionRepository;
 	private final QuestionAnswerRepository questionAnswerRepository;
+	private final QuestionAnswerQuery questionAnswerQuery;
 
 	@Transactional
 	public AnswerCreateResponseDto createAnswer(AnswerRequestDto dto) {
@@ -45,8 +47,7 @@ public class AnswerService {
 
 	@Transactional(readOnly = true)
 	public AnswerResponseDto getAnswer(String uuid) {
-		QuestionAnswer questionAnswer = questionAnswerRepository.findBy(uuid).orElseThrow(
-			() -> new GeneralException(ErrorStatus.ANSWER_NOT_FOUND.getReasonHttpStatus()));
+		QuestionAnswer questionAnswer = questionAnswerQuery.findByUUID(uuid);
 
 		return new AnswerResponseDto(questionAnswer.getQuestion().getQuestion(),
 			questionAnswer.getAnswer().getAnswer());
