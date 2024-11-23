@@ -1,10 +1,10 @@
 name: Java CI with Gradle
 
 # 워크플로우를 수행할 이벤트를 설정합니다. 
-# 여기서는 'main' 브랜치에 Pull Request가 생성될 때 수행됩니다.
+# 여기서는 'dev' 브랜치에 Pull Request가 생성될 때 수행됩니다.
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ dev ]
 
 permissions:
   contents: read
