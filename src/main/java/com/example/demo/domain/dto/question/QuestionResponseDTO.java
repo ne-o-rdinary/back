@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 public class QuestionResponseDTO {
     private Long questionId;
     private String question;
-    public QuestionResponseDTO(Long questionId, String question) {
+    private int imageIndex;
+    public QuestionResponseDTO(Long questionId, String question, int imageIndex) {
         this.questionId = questionId;
         this.question = question;
+        this.imageIndex = imageIndex;
     }
 }
