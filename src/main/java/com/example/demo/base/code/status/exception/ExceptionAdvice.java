@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -94,5 +95,18 @@ public class ExceptionAdvice {
     private ResponseEntity<ApiResponse<Object>> buildErrorResponse(ErrorReasonDTO errorReason, HttpServletRequest request) {
         ApiResponse<Object> body = ApiResponse.onFailure(errorReason.getCode(), errorReason.getMessage(), null);
         return ResponseEntity.status(errorReason.getHttpStatus()).body(body);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiResponse<?>> handleHttpMessageNotReadable(
+        HttpMessageNotReadableException ex) {
+        String errorMessage = "유효하지 않은 요청 형식입니다. ID는 숫자만 입력해야 합니다.";
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body(ApiResponse.onFailure(
+                "COMMON400",
+                errorMessage,
+                null
+            ));
     }
 }
