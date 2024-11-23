@@ -16,8 +16,8 @@ public class SwaggerConfig {
     public OpenAPI createOpenAPI() {
         // API 정보 설정
         Info apiInfo = new Info()
-                .title("제발 그냥 되라") // API 제목
-                .description("UMC Server WorkBook API 명세서") // API 설명
+                .title("너디너리 해커톤 N팀") // API 제목
+                .description("너디너리 해커톤 N팀 API 명세서") // API 설명
                 .version("1.0.0"); // API 버전
 
         // JWT 인증 설정

@@ -1,4 +1,4 @@
-package com.example.demo.domain.token;
+package com.example.demo.domain.entity.token;
 
 import jakarta.persistence.*;
 import lombok.*;

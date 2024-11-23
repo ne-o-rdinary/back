@@ -18,6 +18,10 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+
+# resources 디렉터리 제외
+/src/main/resources/
+
 .idea
 *.iws
 *.iml
