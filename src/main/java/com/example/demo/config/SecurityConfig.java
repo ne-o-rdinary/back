@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> {
                     authorize
                             .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()  // Swagger 관련 경로 허용
-                            .requestMatchers("/api/login", "/api/register").permitAll()  // 로그인 및 회원가입은 인증 없이 접근 가능
+                            .requestMatchers("/api/login", "/api/register", "/api/answers").permitAll()// 로그인 및 회원가입은 인증 없이 접근 가능
                             .requestMatchers("/api/admin/**").hasRole("ADMIN")  // 관리자만 접근할 수 있는 엔드포인트
                             .anyRequest().authenticated();  // 나머지 요청은 인증을 요구
                 })

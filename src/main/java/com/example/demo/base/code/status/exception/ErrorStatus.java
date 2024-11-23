@@ -32,7 +32,13 @@ public enum ErrorStatus implements BaseErrorCode {
     OAUTH_LOGIN_FAILED(HttpStatus.UNAUTHORIZED, "OAUTH4002", "OAuth 로그인에 실패했습니다."),
     UNSUPPORTED_OAUTH_PROVIDER(HttpStatus.BAD_REQUEST, "OAUTH4003", "지원하지 않는 OAuth 제공자입니다."),
     OAUTH_PROCESSING_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "OAUTH5001", "OAuth 처리에 실패했습니다."),
-    REFRESH_TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "TOKEN4001", "리프레시 토큰을 찾을 수 없습니다.");
+    REFRESH_TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "TOKEN4001", "리프레시 토큰을 찾을 수 없습니다."),
+
+    // 질문 관련 에러
+    QUESTION_NOT_FOUND(HttpStatus.NOT_FOUND, "QUESTION4005", "해당 질문을 찾을 수 없습니다."),
+
+    // 답변 관련 에러
+    ANSWER_NOT_FOUND(HttpStatus.NOT_FOUND, "ANSWER4004", "해당 답변을 찾을 수 없습니다.");
 
 
     private final HttpStatus httpStatus;
