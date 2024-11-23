@@ -38,8 +38,8 @@ spring:
             client-authentication-method: client_secret_post
 
           naver:
-            client-id: hbhB10Tk7nEfIWzdZDnW
-            client-secret: TR7P0nBX0D
+            client-id: "${OAUTH_NAVER_CLIENT_ID}"
+            client-secret: "${OAUTH_NAVER_CLIENT_SECRET}"
             scope:
               - name
             client-name: Naver
