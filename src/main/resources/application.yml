@@ -7,7 +7,7 @@ server:
 
 spring:
   jwt:
-    secret-key: "hadgfsfsfsfsssfsfssfsfsfsffasadad1234567890"  # JWT 비밀 키 (256비트 이상)
+    secret-key: "${JWT_SECRET_KEY}"
     redirect: "https://yoonsever.xn--h32bi4v.xn--3e0b707e:443/login?name=%s&user_uuid=%s"  # 로그인 후 리디렉션 URL (사용자 uuid 포함)
     access-token:
       expiration-time: 3600000  # 액세스 토큰 만료 시간 (밀리초 단위, 1시간)
