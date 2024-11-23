@@ -1,5 +1,8 @@
 package com.example.demo.domain.dto.answer;
 
+import lombok.Getter;
+
+@Getter
 public class AnswerResponseDto {
 
 	private String question;

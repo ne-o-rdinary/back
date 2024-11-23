@@ -31,6 +31,9 @@ public class QuestionService {
     public QuestionResponseDTO getRandomQuestion(QuestionCategory category) {
 
         List<Long> questions = questionQuery.findIdByQuestionCategory(category);
+        if(questions.isEmpty()) {
+            throw new GeneralException(ErrorStatus.QUESTION_NOT_FOUND.getReasonHttpStatus());
+        }
 
         Random random = new Random();
         Long randomNumber = questions.get(random.nextInt(questions.size()));
