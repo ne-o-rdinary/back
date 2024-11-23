@@ -1,5 +1,12 @@
 package com.example.demo.service.answer;
 
+import com.example.demo.base.code.status.exception.ErrorStatus;
+import com.example.demo.base.code.status.exception.GeneralException;
+import com.example.demo.domain.dto.answer.AnswerCreateResponseDto;
+import com.example.demo.domain.dto.answer.AnswerRequestDto;
+import com.example.demo.domain.entity.answer.Answer;
+import com.example.demo.domain.entity.question.Question;
+import com.example.demo.domain.entity.question_answer.QuestionAnswer;
 import com.example.demo.repository.answer.AnswerRepository;
 import com.example.demo.repository.question.QuestionRepository;
 import com.example.demo.repository.question_answer.QuestionAnswerRepository;
@@ -10,11 +17,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class AnswerService {
 
-    private final AnswerRepository answerRepository;
-    private final QuestionRepository questionRepository;
-    private final QuestionAnswerRepository questionAnswerRepository;
+	private final AnswerRepository answerRepository;
+	private final QuestionRepository questionRepository;
+	private final QuestionAnswerRepository questionAnswerRepository;
+
+	@Transactional
+	public AnswerCreateResponseDto createAnswer(AnswerRequestDto dto) {
+
+		Question question = questionRepository.findById(dto.getQuestionId()).orElseThrow(
+			() -> new GeneralException(ErrorStatus.QUESTION_NOT_FOUND.getReasonHttpStatus()));
+
+		Answer answer = new Answer(dto.getAnswer());
+		answerRepository.save(answer);
+
+		QuestionAnswer questionAnswer = new QuestionAnswer(question, answer);
+		questionAnswerRepository.save(questionAnswer);
+
+		return new AnswerCreateResponseDto(answer);
+	}
 }
