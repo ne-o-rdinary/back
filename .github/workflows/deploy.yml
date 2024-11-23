@@ -24,14 +24,20 @@ jobs:
 
     - name: Build project
       env:
-        SERVER_SSL_KEY_STORE: ${{ secrets.SERVER_SSL_KEY_STORE }}
-        SERVER_SSL_KEY_STORE_PASSWORD: ${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }}
-        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        SERVER_SSL_KEY_STORE: ${{ secrets.SERVER_SSL_KEY_STORE }}
+        SERVER_SSL_KEY_STORE_PASSWORD: ${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }}
+        OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}
+        OAUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.OAUTH_GOOGLE_CLIENT_SECRET }}
+        OAUTH_KAKAO_CLIENT_ID: ${{ secrets.OAUTH_KAKAO_CLIENT_ID }}
+        OAUTH_KAKAO_CLIENT_SECRET: ${{ secrets.OAUTH_KAKAO_CLIENT_SECRET }}
+        OAUTH_NAVER_CLIENT_ID: ${{ secrets.OAUTH_NAVER_CLIENT_ID }}
+        OAUTH_NAVER_CLIENT_SECRET: ${{ secrets.OAUTH_NAVER_CLIENT_SECRET }}
       run: ./gradlew clean build
 
     - name: Copy JAR to remote server
@@ -48,17 +54,29 @@ jobs:
 
     - name: Deploy application
       env:
-        SERVER_SSL_KEY_STORE: ${{ secrets.SERVER_SSL_KEY_STORE }}
-        SERVER_SSL_KEY_STORE_PASSWORD: ${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }}
-        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        SERVER_SSL_KEY_STORE: ${{ secrets.SERVER_SSL_KEY_STORE }}
+        SERVER_SSL_KEY_STORE_PASSWORD: ${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }}
+        OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}
+        OAUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.OAUTH_GOOGLE_CLIENT_SECRET }}
+        OAUTH_KAKAO_CLIENT_ID: ${{ secrets.OAUTH_KAKAO_CLIENT_ID }}
+        OAUTH_KAKAO_CLIENT_SECRET: ${{ secrets.OAUTH_KAKAO_CLIENT_SECRET }}
+        OAUTH_NAVER_CLIENT_ID: ${{ secrets.OAUTH_NAVER_CLIENT_ID }}
+        OAUTH_NAVER_CLIENT_SECRET: ${{ secrets.OAUTH_NAVER_CLIENT_SECRET }}
       run: |
         set -x  # 명령어를 실행할 때마다 출력
         ssh mykeyhost << 'EOF'
-        sudo pkill -f 'java -jar' || true  # 기존 실행 중인 서버 프로세스 종료
-        sudo nohup java -jar ~/demo-0.0.1-SNAPSHOT.jar --server.port=443 --server.ssl.key-store=$SERVER_SSL_KEY_STORE --server.ssl.key-store-password=$SERVER_SSL_KEY_STORE_PASSWORD --jwt.secret-key=$JWT_SECRET_KEY --spring.datasource.url=$DATABASE_URL --spring.datasource.username=$DATABASE_USERNAME --spring.datasource.password=$DATABASE_PASSWORD --cloud.aws.credentials.accessKey=$AWS_ACCESS_KEY_ID --cloud.aws.credentials.secretKey=$AWS_SECRET_ACCESS_KEY > app.log 2>&1 &  # 새로 배포된 애플리케이션 실행
+        sudo pkill -f 'java -jar' || true
+        sudo nohup java -jar ~/demo-0.0.1-SNAPSHOT.jar \
+          --server.ssl.key-store=$SERVER_SSL_KEY_STORE \
+          --server.ssl.key-store-password=$SERVER_SSL_KEY_STORE_PASSWORD \
+          --server.port=443 \
+          --jwt.secret-key=$JWT_SECRET_KEY \
+          --aws.access-key-id=$AWS_ACCESS_KEY_ID \
+          --aws.secret-access-key=$AWS_SECRET_ACCESS_KEY > app.log 2>&1 &
         EOF
