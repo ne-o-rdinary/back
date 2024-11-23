@@ -67,7 +67,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create  # 처음에는 create -> 나중에는 update
+      ddl-auto: update  # 처음에는 create -> 나중에는 update
     show-sql: true
   spring:
     servlet:
