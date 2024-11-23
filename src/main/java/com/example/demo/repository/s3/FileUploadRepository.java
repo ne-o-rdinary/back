@@ -1,6 +1,6 @@
 package com.example.demo.repository.s3;
 
-import com.example.demo.entity.s3.FileUploadEntity;
+import com.example.demo.domain.entity.s3.FileUploadEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

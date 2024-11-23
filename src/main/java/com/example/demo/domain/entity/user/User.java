@@ -1,4 +1,4 @@
-package com.example.demo.domain.user;
+package com.example.demo.domain.entity.user;
 
 import com.example.demo.domain.enums.Role;
 import jakarta.persistence.*;

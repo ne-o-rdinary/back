@@ -1,13 +1,15 @@
-package com.example.demo.entity.s3;
+package com.example.demo.domain.entity.s3;
 
+import com.example.demo.domain.entity.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.util.UUID;
 
+
 @Entity
-public class FileUploadEntity {
+public class FileUploadEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // UUID로 자동 생성

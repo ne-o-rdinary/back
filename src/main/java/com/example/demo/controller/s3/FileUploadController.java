@@ -5,7 +5,7 @@ import com.example.demo.base.code.status.exception.ErrorStatus;
 import com.example.demo.base.code.status.exception.GeneralException;
 import com.example.demo.domain.dto.s3.FileUploadRequestDTO;
 import com.example.demo.domain.dto.s3.FileUploadResponseDTO;
-import com.example.demo.entity.s3.FileUploadEntity;
+import com.example.demo.domain.entity.s3.FileUploadEntity;
 import com.example.demo.repository.s3.FileUploadRepository;
 import com.example.demo.service.s3.FileUploadService;
 import io.swagger.v3.oas.annotations.Operation;
