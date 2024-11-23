@@ -5,7 +5,7 @@ import com.example.demo.base.code.status.exception.ErrorStatus;
 import com.example.demo.domain.converter.s3.FileUploadConverter;
 import com.example.demo.domain.dto.s3.FileUploadRequestDTO;
 import com.example.demo.domain.dto.s3.FileUploadResponseDTO;
-import com.example.demo.entity.s3.FileUploadEntity;
+import com.example.demo.domain.entity.s3.FileUploadEntity;
 import com.example.demo.repository.s3.FileUploadRepository;
 import com.example.demo.util.s3.AmazonS3Manager;
 import org.springframework.beans.factory.annotation.Autowired;

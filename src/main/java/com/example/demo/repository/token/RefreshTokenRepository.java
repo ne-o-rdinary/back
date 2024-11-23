@@ -1,6 +1,6 @@
 package com.example.demo.repository.token;
 
-import com.example.demo.domain.token.RefreshToken;
+import com.example.demo.domain.entity.token.RefreshToken;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
