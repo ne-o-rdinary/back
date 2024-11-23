@@ -15,6 +15,7 @@ public enum ErrorStatus implements BaseErrorCode {
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "COMMON400", "잘못된 요청입니다."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "COMMON401", "인증이 필요합니다."),
     FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "접근이 금지되었습니다."),
+    INVALID_ID_TYPE(HttpStatus.BAD_REQUEST, "COMMON400", "적합하지 않은 ID 타입입니다"),
 
     // s3 관련 에러
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "FILE4001", "파일 업로드 실패"),
