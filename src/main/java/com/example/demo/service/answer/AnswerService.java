@@ -48,6 +48,9 @@ public class AnswerService {
 	@Transactional(readOnly = true)
 	public AnswerResponseDto getAnswer(String uuid) {
 		QuestionAnswer questionAnswer = questionAnswerQuery.findByUUID(uuid);
+		if (questionAnswer == null) {
+			throw new GeneralException(ErrorStatus.QUESTION_ANSWER_NOT_FOUND.getReasonHttpStatus());
+		}
 
 		return new AnswerResponseDto(questionAnswer.getQuestion().getQuestion(),
 			questionAnswer.getAnswer().getAnswer());

@@ -38,7 +38,10 @@ public enum ErrorStatus implements BaseErrorCode {
     QUESTION_NOT_FOUND(HttpStatus.NOT_FOUND, "QUESTION4005", "해당 질문을 찾을 수 없습니다."),
 
     // 답변 관련 에러
-    ANSWER_NOT_FOUND(HttpStatus.NOT_FOUND, "ANSWER4004", "해당 답변을 찾을 수 없습니다.");
+    ANSWER_NOT_FOUND(HttpStatus.NOT_FOUND, "ANSWER4004", "해당 답변을 찾을 수 없습니다."),
+
+    // 답변 & 질문 에러
+    QUESTION_ANSWER_NOT_FOUND(HttpStatus.NOT_FOUND, "QUESTION_ANSWER4001", "해당 질문과 답변을 찾을 수 없습니다.");
 
 
     private final HttpStatus httpStatus;
